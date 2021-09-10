@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>componentes</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+    <style>
+        
+        .Personajes {
+            position: relative;
+        }      
+        .nombre {
+            font-size: x-large;
+            margin: -1050px 10px 100px 150px;
+            color:green;
+        }
+        .foto {
+            width: 80px;
+            margin: -1200px -10px 980px 50px;
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <img class="bg" src="https://rickandmortypod.com/wp-content/uploads/2018/11/cropped-RM_page-header_background1-3.png"/> 
+        <Personajes></Personajes>
+    </div>    
+
+
+</body>
+</html>
+
+
+<script>
+    Vue.component("Personajes", {
+        template:`
+                <div>
+                    <div class="Personajes" v-for = "(item, index) in personas" :key = "index"> 
+                        <img  class="foto" :src="item.src" :alt="index">
+                        <p class="nombre" v-text="item.nombre"></p>
+                    </div>
+                </div>`,
+        data() {
+            return {
+                personas: [
+                    {nombre: "Rick Sanchez", src: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"},
+                    {nombre: "Morty Smith", src: "https://rickandmortyapi.com/api/character/avatar/2.jpeg"},
+                    {nombre: "Summer Smith", src: "https://rickandmortyapi.com/api/character/avatar/3.jpeg"},
+                    {nombre: "Beth Smith", src: "https://rickandmortyapi.com/api/character/avatar/4.jpeg"},
+                    {nombre: "Jerry Smith", src: "https://rickandmortyapi.com/api/character/avatar/5.jpeg"}
+                ]
+            }
+        }
+    })
+    const app = new Vue({
+        el: '#app',
+    });
+</script>
